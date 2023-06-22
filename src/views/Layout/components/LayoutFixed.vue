@@ -1,0 +1,119 @@
+<script setup>
+import { useScroll } from '@vueuse/core'
+import { useCategoryStore } from "@/stores/category";
+const { y } = useScroll(window)
+
+
+const categoryStore = useCategoryStore()
+</script>
+
+<template>
+    <div class="app-header-sticky" :class="y > 78 ? 'show' : ''">
+        <div class="container">
+            <RouterLink class="logo" to="/" />
+            <!-- 导航区域 -->
+            <ul class="app-header-nav">
+                <li class="home">
+                    <RouterLink to="/">首页</RouterLink>
+                </li>
+                <li v-for="item in categoryStore.categoryList" :key="item.id">
+                    <RouterLink to="/">{{ item.name }}</RouterLink>
+                </li>
+
+            </ul>
+
+            <div class="right">
+                <RouterLink to="/">品牌</RouterLink>
+                <RouterLink to="/">专题</RouterLink>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+<style scoped lang='scss'>
+.app-header-sticky {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: #262626;
+    border-bottom: 1px solid #e4e4e4;
+    // 此处为关键样式!!!
+    // 状态一：往上平移自身高度 + 完全透明
+    transform: translateY(-100%);
+    opacity: 0;
+
+    // 状态二：移除平移 + 完全不透明
+    &.show {
+        transition: all 0.3s linear;
+        transform: none;
+        opacity: 1;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 220px;
+        height: 80px;
+        background: url("@/assets/images/logo.png") no-repeat 2px;
+        background-size: 220px auto;
+    }
+
+    .right {
+        width: 220px;
+        display: flex;
+        text-align: center;
+        padding-left: 40px;
+        border-left: 2px solid $textColor;
+
+        a {
+            width: 38px;
+            margin-right: 40px;
+            font-size: 16px;
+            line-height: 1;
+
+            &:hover {
+                color: $textColor;
+            }
+        }
+    }
+}
+
+.app-header-nav {
+    width: 820px;
+    display: flex;
+    padding-left: 40px;
+    position: relative;
+    z-index: 998;
+
+    li {
+        margin-right: 40px;
+        width: 38px;
+        text-align: center;
+
+        a {
+            font-size: 16px;
+            line-height: 32px;
+            height: 32px;
+            display: inline-block;
+
+            &:hover {
+                color: $textColor;
+                border-bottom: 1px solid $textColor;
+            }
+        }
+
+        .active {
+            color: $textColor;
+            border-bottom: 1px solid $textColor;
+        }
+    }
+}
+</style>
