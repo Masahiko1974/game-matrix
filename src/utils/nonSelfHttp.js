@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 const httpInstance = axios.create({
-    baseURL: 'https://fc-mp-e800ac57-5bd6-416c-ae29-ef9a46343447.next.bspapp.com',
+    //https://fc-mp-e800ac57-5bd6-416c-ae29-ef9a46343447.next.bspapp.com
+    baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
     timeout: 5000
 })
 

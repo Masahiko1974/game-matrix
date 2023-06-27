@@ -1,13 +1,21 @@
-<template>
-    <div style="height: 1200px;">
-        Home
-    </div>
-</template>
-
 <script setup>
-
+import HomeBanner from "./components/HomeBanner.vue"
+import HomeCategory from "./components/HomeCategory.vue"
+import Homegames from "./components/Homegames.vue"
+import HomeHot from "./components/HomeHot.vue"
+import HomeNew from "./components/HomeNew.vue"
 </script>
 
-<style lang="scss" scoped>
+<template>
+    <div class="container">
+        <HomeCategory />
+        <HomeBanner />
+    </div>
+    <HomeNew />
+    <HomeHot />
+    <Homegames />
+</template>
 
-</style>
+
+
+<style lang="scss" scoped></style>

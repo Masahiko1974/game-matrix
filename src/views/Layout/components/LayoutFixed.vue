@@ -1,6 +1,6 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
-import { useCategoryStore } from "@/stores/category";
+import { useCategoryStore } from '@/stores/category';
 const { y } = useScroll(window)
 
 
@@ -16,8 +16,8 @@ const categoryStore = useCategoryStore()
                 <li class="home">
                     <RouterLink to="/">首页</RouterLink>
                 </li>
-                <li v-for="item in categoryStore.categoryList" :key="item.id">
-                    <RouterLink to="/">{{ item.name }}</RouterLink>
+                <li v-for="cate in categoryStore.categoryList" :key="cate._id">
+                    <RouterLink to="/">{{ cate.name }}</RouterLink>
                 </li>
 
             </ul>
@@ -41,7 +41,6 @@ const categoryStore = useCategoryStore()
     top: 0;
     z-index: 999;
     background-color: #262626;
-    border-bottom: 1px solid #e4e4e4;
     // 此处为关键样式!!!
     // 状态一：往上平移自身高度 + 完全透明
     transform: translateY(-100%);
@@ -94,8 +93,8 @@ const categoryStore = useCategoryStore()
     z-index: 998;
 
     li {
-        margin-right: 40px;
-        width: 38px;
+        margin-right: 24px;
+        width: 68px;
         text-align: center;
 
         a {
@@ -105,14 +104,12 @@ const categoryStore = useCategoryStore()
             display: inline-block;
 
             &:hover {
-                color: $textColor;
-                border-bottom: 1px solid $textColor;
+                color: $activeTextColor;
             }
         }
 
         .active {
-            color: $textColor;
-            border-bottom: 1px solid $textColor;
+            color: $activeTextColor;
         }
     }
 }

@@ -2,10 +2,7 @@
 
 import { useCategoryStore } from "@/stores/category";
 
-
 const categoryStore = useCategoryStore()
-
-
 
 </script>
 
@@ -16,8 +13,8 @@ const categoryStore = useCategoryStore()
                 <RouterLink to="/"></RouterLink>
             </h1>
             <ul class="app-header-nav">
-                <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-                    <RouterLink to="/">{{ item.name }}</RouterLink>
+                <li class="home" v-for="cate in categoryStore.categoryList" :key="cate._id">
+                    <RouterLink to="/">{{ cate.name }}</RouterLink>
                 </li>
             </ul>
             <div class="search">
@@ -54,13 +51,13 @@ const categoryStore = useCategoryStore()
     .app-header-nav {
         width: 680px;
         display: flex;
-        padding-left: 24px;
+        padding-left: 28px;
         position: relative;
         z-index: 998;
 
         li {
-            margin-right: 32px;
-            width: 38px;
+            margin-right: 24px;
+            width: 68px;
             text-align: center;
 
             a {
