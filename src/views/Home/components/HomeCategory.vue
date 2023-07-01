@@ -13,18 +13,18 @@ const categoryStore = useCategoryStore()
                 <div class="layer">
                     <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
                     <ul>
-                        <!-- <li v-for="i in item.goods " :key="i.id">
+                        <li v-for="item in cate.goods " :key="item._id">
                             <RouterLink to="/">
-                                <img :src="i.picture" alt="" />
+                                <img :src="item.thumb" alt="" />
                                 <div class="info">
                                     <p class="name ellipsis-2">
-                                        {{ i.name }}
+                                        {{ item.name }}
                                     </p>
-                                    <p class="desc ellipsis">{{ i.desc }}</p>
-                                    <p class="price"><i>¥</i>{{ i.price }}</p>
+                                    <!-- <p class="desc ellipsis">{{ item.desc }}</p> -->
+                                    <p class="price"><i>¥</i>{{ item.price }}</p>
                                 </div>
                             </RouterLink>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </li>

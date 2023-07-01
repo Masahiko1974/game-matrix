@@ -1,9 +1,19 @@
 <script setup>
-import { HomePanel } from "./HomePanel.vue";
+import { onMounted, ref } from "vue";
+import HomePanel from "./HomePanel.vue";
+import { getLatestAPI } from "@/apis/home";
+const latestList = ref([])
+const getLatestList = async () => {
+    const res = await getLatestAPI()
+    console.log(res)
+}
+onMounted(() => {
+    getLatestList()
+})
 </script>
 
 <template>
-    <HomePanel title="">
+    <HomePanel title="全新发行" subTitle="最新推出 马上体验">
 
     </HomePanel>
     <!-- 下面是插槽主体内容模版
